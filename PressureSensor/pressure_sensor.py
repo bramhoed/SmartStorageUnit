@@ -14,9 +14,10 @@ class PressureSensorThread:
     state (int): Wheter or not sensor is under pressure use getState() to obtain
     new (bool): set whenever new value is read. 
 
+    global_state (StorageUnitState): copy of the global state
     """
 
-    def __init__(self, pin):
+    def __init__(self, pin, _global_state):
         self.input_pin = pin
 
         GPIO.setmode(GPIO.BCM)
@@ -24,7 +25,8 @@ class PressureSensorThread:
         
         self.thread = threading.Thread(target=self.pollSensor)
         self.thread.start()
-        self.new = False
+
+        self.global_state = _global_state
 
 
     def pollSensor(self):
@@ -36,10 +38,10 @@ class PressureSensorThread:
 
             if ((not prev_state) and state):
                 print("Wollah pressure G!")
-                self.new = True
+                global_state.addItem()
             elif ((not state) and prev_state):
                 print("Wollah geen pressure G!")
-                self.new = True
+                global_state.removeItem()
 
             prev_state = state
 
