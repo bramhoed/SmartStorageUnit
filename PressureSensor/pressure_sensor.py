@@ -34,6 +34,8 @@ class PressureSensorThread:
 
             if ((not prev_state) and state):
                 print("Wollah pressure G!")
+            elif ((not state) and prev_state):
+                print("Wollah geen pressure G!")
 
             prev_state = state
 
