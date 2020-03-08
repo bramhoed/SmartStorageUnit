@@ -17,7 +17,7 @@ class StorageUnitState:
         self.oocsi = _oocsi
         self.items = {}
         self.curr_recipe = Recipe('example_recipe.json')
-        self.pressure
+        self.pressure = 0
 
     def updateOOCSI(self):
         self.oocsi.send('itemListChannel', self.items)
