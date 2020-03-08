@@ -30,7 +30,7 @@ class PressureSensorThread:
         prev_state = 0
 
         while True:
-            state = GPIO.input(input_pin)
+            state = GPIO.input(self.input_pin)
 
             if ((not prev_state) and state):
                 print("Wollah pressure G!")
