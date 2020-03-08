@@ -24,6 +24,7 @@ class PressureSensorThread:
         
         self.thread = threading.Thread(target=self.pollSensor)
         self.thread.start()
+        self.new = False
 
 
     def pollSensor(self):
