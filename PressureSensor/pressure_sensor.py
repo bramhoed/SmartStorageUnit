@@ -21,7 +21,8 @@ class PressureSensorThread:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(pin, GPIO.IN)
         
-        self.thread = threadinf.Thread(target=self.pollSensor)
+        self.thread = threading.Thread(target=self.pollSensor)
+        self.thread.start()
 
 
     def pollSensor(self):
