@@ -18,7 +18,6 @@ listener = Listener(receiver_channels)
 
 # Are we cooking something?
 current_recipe = Recipe('example_recipe.json')
-print(current_recipe.recipe_text)
 
 
 

@@ -1,4 +1,4 @@
-
+import json
 
 class Recipe: 
     """
@@ -29,10 +29,25 @@ class Recipe:
         Arguments:
         filename (str): filename of the recipe to be loaded
         """
+
+        # Initialize all values to zero
         self.ingredients = {}
         self.num_persons = 0
         self.cooking_time = 0
-        self.recipe_text = 'Cook ALL the things!'
+        self.recipe_text = ''
         self.steps = [{}]
         self.cur_step = 0
 
+        # Parse recipe from json
+        with open(filename, 'r') as f:
+            recipe = json.load(f)
+
+            self.ingredients = recipe['ingredients']
+            self.num_persons = recipe['num_persons']
+            self.cooking_time = recipe['cooking_time']
+            self.recipe_text = recipe['recipe_text']
+            self.steps = recipe['steps']
+            
+
+
+    
