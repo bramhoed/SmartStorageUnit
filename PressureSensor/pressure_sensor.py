@@ -39,6 +39,3 @@ class PressureSensorThread:
 
             time.sleep(0.10)
 
-        
-PressureSensorThread(21)
-
