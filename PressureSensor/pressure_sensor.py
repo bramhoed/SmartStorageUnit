@@ -16,5 +16,3 @@ while True:
 
     time.sleep(0.10)
 
-finally:
-    GPIO.cleanup()
