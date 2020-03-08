@@ -13,7 +13,7 @@ class StorageUnitState:
     
     def __init__(self, _oocsi):
         self.oocsi = _oocsi
-        self.items = {}
+        self.items = 0
         self.curr_recipe = Recipe('example_recipe.json')
 
         

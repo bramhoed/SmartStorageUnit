@@ -11,7 +11,8 @@ class PressureSensorThread:
     input_pin (int): Pin number of to which the pressure sensor is connected
     thread (Thread): Thread object for the polling thread
 
-    state (int): Wheter or not sensor is under pressure
+    state (int): Wheter or not sensor is under pressure use getState() to obtain
+    new (bool): set whenever new value is read. 
 
     """
 
@@ -34,10 +35,18 @@ class PressureSensorThread:
 
             if ((not prev_state) and state):
                 print("Wollah pressure G!")
+                self.new = True
             elif ((not state) and prev_state):
                 print("Wollah geen pressure G!")
+                self.new = True
 
             prev_state = state
 
             time.sleep(0.10)
+
+    def getState(self):
+
+        self.new = False
+        return self.state
+
 
