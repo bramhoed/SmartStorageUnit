@@ -1,18 +1,43 @@
 import RPi.GPIO as GPIO
 import time
+import threading
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN)
 
-prev_input = 0
+class PressureSensorThread:
+    """
+    Class that starts a thread to continully poll a pressure sensor
 
-while True:
-    input = GPIO.input(21)
+    Attributes:
+    input_pin (int): Pin number of to which the pressure sensor is connected
+    thread (Thread): Thread object for the polling thread
 
-    if ((not prev_input) and input):
-        print("Wollah pressure G!")
+    state (int): Wheter or not sensor is under pressure
 
-    prev_input = input
+    """
 
-    time.sleep(0.10)
+    def __init__(self, pin):
+        self.input_pin = pin
+
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(pin, GPIO.IN)
+        
+        self.thread = threadinf.Thread(target=self.pollSensor)
+
+
+    def pollSensor(self):
+
+        prev_state = 0
+
+        while True:
+            state = GPIO.input(input_pin)
+
+            if ((not prev_state) and state):
+                print("Wollah pressure G!")
+
+            prev_state = state
+
+            time.sleep(0.10)
+
+        
+PressureSensorThread(21)
 
