@@ -25,7 +25,6 @@ class EventHandler:
             print('User stopped cutting something!')
             self.user_cutting = False
 
-            
     def onSoundSpectrum(self, sender, event):
         print('Sound Spectrum event!')
 
