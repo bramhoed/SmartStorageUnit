@@ -27,6 +27,6 @@ receiver_channels = {
 listener = Listener(oocsi, receiver_channels)
 
 # Start the pressure sensor thread with sensor on GPIO 21
-psensor = PressureSensorThread(21)
+psensor = PressureSensorThread(21, global_state)
 # psensor = 0 # use for testing without RPi
 
