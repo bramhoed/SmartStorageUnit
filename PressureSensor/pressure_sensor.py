@@ -22,6 +22,7 @@ class PressureSensorThread:
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(pin, GPIO.IN)
+        #set up pin in BCM mode
         
         self.thread = threading.Thread(target=self.pollSensor)
         self.thread.start()
@@ -38,16 +39,19 @@ class PressureSensorThread:
 
             if ((not prev_state) and state):
                 self.global_state.addItem()
+                #scanned a new item and added pressure means item is added to the list
             elif ((not state) and prev_state):
                 self.global_state.removeItem()
+                #scanned item and diminished pressure means item is removed and thus also from the list
 
             prev_state = state
 
             time.sleep(0.10)
-
+    	    #set blocking time to .1 seconds, measure each .1 seconds
     def getState(self):
 
         self.new = False
         return self.state
+    #print state 
 
 
